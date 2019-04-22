@@ -13,76 +13,49 @@ library(MASS)
 library(survival)
 library(fitdistrplus)
 library(readxl)
+library(rriskDistributions)
 
 ############################################################################################
 ## Cargar serie de datos:
 datos <- read_excel("DATA_FINAL.xlsx", sheet = "DATA")
 
+r2 <- datos$Recepción2
+r2 <- r2[!is.na(r2)]
+
+r3 <- datos$Recepción3
+r3 <- r3[!is.na(r3)]
+
+saludO <- datos$SaludOcupacional
+saludO <- saludO[!is.na(saludO)]
+
+audio <- datos$Audiometría
+audio <- audio[!is.na(audio)]
+
+espir <- datos$Espirometría
+espir <- espir[!is.na(espir)]
+
+opto <- datos$Optometría
+opto <- opto[!is.na(opto)]
+
+tm <- datos$TomaMuestras
+tm <- tm[!is.na(tm)]
+
+entrega <- datos$EntregaLab
+entrega <- entrega[!is.na(entrega)]
 
 ############################################################################################
-## Histograma de la serie de datos.
-hist(datos$E1, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
+## Recepción 2
 
-############################################################################################
-### Prueba de homogeneidad de varianzas 
+## Histograma de la serie de datos
+hist(r2, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
 
-#Filtrar la tabla por las 2 franjas horarias que voy a comparar
-dosniveles<-datos[datos$Franja %in% c("1", "2"), ]
-
-#Ver tabla
-#View(dosniveles)
-
-#Prueba de varianzas iguales
-res.ftest<-var.test(dosniveles$E1~dosniveles$Franja,data=dosniveles)
-
-#Resultados test F 
-res.ftest
-
-#Filtrar la tabla por las 2 franjas horarias que voy a comparar
-dosniveles<-datos[datos$Franja %in% c("2", "3"), ]
-
-#Ver tabla
-#View(dosniveles)
-
-#Prueba de varianzas iguales
-res.ftest<-var.test(dosniveles$E1~dosniveles$Franja,data=dosniveles)
-
-#Resultados test F 
-res.ftest
-
-#Filtrar la tabla por las 2 franjas horarias que voy a comparar
-dosniveles<-datos[datos$Franja %in% c("3", "1"), ]
-
-#Ver tabla
-#View(dosniveles)
-
-#Prueba de varianzas iguales
-res.ftest<-var.test(dosniveles$E1~dosniveles$Franja,data=dosniveles)
-
-#Resultados test F 
-res.ftest
-############################################################################################
-### Prueba de diferencia de medias
-
-#Filtrar la tabla por las 2 franjas horarias que voy a comparar
-dosniveles <- datos[datos$Franja %in% c("3", "1"), ]
-
-# Prueba de diferencia de medias
-res.ttest <- t.test(dosniveles$E1~dosniveles$Franja,data=dosniveles)
-
-# Resultados prueba diferencia de medias
-res.ttest
-
-############################################################################################
 ##  Bondad de ajuste para la franja horaria 1
-franjahoraria<-datos[datos$Franja %in% c("1"), ]
 
-## Histograma de la serie de datos.
-hist(franjahoraria$E1, main = "Histograma de la serie de datos", las=1, prob=FALSE)
+res <- fit.cont(r2)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste <- fitdist(franjahoraria$E1, "exp")
+ajuste <- fitdist(r2, "lnorm")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste$estimate
@@ -99,56 +72,214 @@ resultados$kstest
 
 ## P-Value de la prueba de Chi-Cuadrado
 resultados$chisqpvalue
+
+
 ############################################################################################
+## Recepción 3
+
+## Histograma de la serie de datos
+hist(r3, main = "Histograma de la serie de datos Recepción 3", xlab="Hora entre Arribos", las=1, pro = FALSE)
+
 ##  Bondad de ajuste para la franja horaria 1
-franjahoraria<-datos[datos$Franja %in% c("2"), ]
 
-
-## Histograma de la serie de datos.
-hist(franjahoraria$E1, main = "Histograma de la serie de datos", las=1, prob=FALSE)
+res2 <- fit.cont(r3)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste <- fitdist(franjahoraria$E1, "exp")
+ajuste2 <- fitdist(r3, "lnorm")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
-ajuste$estimate
+ajuste2$estimate
 
 ## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
-plot(ajuste)
+plot(ajuste2)
 
 ## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
 ## la distribuci?n te?rica escogida.
-resultados <- gofstat(ajuste)
+resultados2 <- gofstat(ajuste)
 
 ## Rechazo de la prueba de Kolmogorov-Smirnov
-resultados$kstest
+resultados2$kstest
 
 ## P-Value de la prueba de Chi-Cuadrado
-resultados$chisqpvalue
-############################################################################################
-##  Bondad de ajuste para la franja horaria 1
-franjahoraria<-datos[datos$Franja %in% c("3"), ]
+resultados2$chisqpvalue
 
-## Histograma de la serie de datos.
-hist(franjahoraria$E1, main = "Histograma de la serie de datos", las=1, prob=FALSE)
+############################################################################################
+## Salud Ocupacional
+
+## Histograma de la serie de datos
+hist(saludO, main = "Histograma de la serie de datos Salud Ocupacional", xlab="Hora entre Arribos", las=1, pro = FALSE)
+
+##  Bondad de ajuste para la franja horaria 1
+
+res3 <- fit.cont(saludO)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste <- fitdist(franjahoraria$E1, "weibull")
+ajuste3 <- fitdist(saludO, "gamma")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
-ajuste$estimate
+ajuste3$estimate
 
 ## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
-plot(ajuste)
+plot(ajuste3)
 
 ## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
 ## la distribuci?n te?rica escogida.
-resultados <- gofstat(ajuste)
+resultados3 <- gofstat(ajuste3)
 
 ## Rechazo de la prueba de Kolmogorov-Smirnov
-resultados$kstest
+resultados3$kstest
 
 ## P-Value de la prueba de Chi-Cuadrado
-resultados$chisqpvalue
+resultados3$chisqpvalue
+
+############################################################################################
+## Audiometría ********* cuadra más con otras distribuciones
+
+## Histograma de la serie de datos
+hist(audio, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
+
+##  Bondad de ajuste para la franja horaria 1
+
+res4 <- fit.cont(audio)
+
+## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
+## a una distribuci?n de probabilidad ingresada por par?metro.
+ajuste4 <- fitdist(audio, "llogis")
+
+## Mostrar los par?metros del ajuste a la distribuci?n dada.
+ajuste4$estimate
+
+## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
+plot(ajuste4)
+
+## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
+## la distribuci?n te?rica escogida.
+resultados4 <- gofstat(ajuste4)
+
+## Rechazo de la prueba de Kolmogorov-Smirnov
+resultados4$kstest
+
+## P-Value de la prueba de Chi-Cuadrado
+resultados4$chisqpvalue
+
+############################################################################################
+## Espirometría ********* cuadra más con otras distribuciones
+
+## Histograma de la serie de datos
+hist(espir, main = "Histograma de Espirometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+
+##  Bondad de ajuste para la franja horaria 1
+
+res5 <- fit.cont(espir)
+
+## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
+## a una distribuci?n de probabilidad ingresada por par?metro.
+ajuste5 <- fitdist(espir, "gamma")
+
+## Mostrar los par?metros del ajuste a la distribuci?n dada.
+ajuste5$estimate
+
+## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
+plot(ajuste5)
+
+## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
+## la distribuci?n te?rica escogida.
+resultados5 <- gofstat(ajuste5)
+
+## Rechazo de la prueba de Kolmogorov-Smirnov
+resultados5$kstest
+
+## P-Value de la prueba de Chi-Cuadrado
+resultados5$chisqpvalue
+
+############################################################################################
+## Optometría ********* cuadra más con otras distribuciones
+
+## Histograma de la serie de datos
+hist(opto, main = "Histograma de Optometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+
+##  Bondad de ajuste para la franja horaria 1
+
+res6 <- fit.cont(opto)
+
+## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
+## a una distribuci?n de probabilidad ingresada por par?metro.
+ajuste6 <- fitdist(opto, "gamma")
+
+## Mostrar los par?metros del ajuste a la distribuci?n dada.
+ajuste6$estimate
+
+## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
+plot(ajuste6)
+
+## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
+## la distribuci?n te?rica escogida.
+resultados6 <- gofstat(ajuste6)
+
+## Rechazo de la prueba de Kolmogorov-Smirnov
+resultados6$kstest
+
+## P-Value de la prueba de Chi-Cuadrado
+resultados6$chisqpvalue
+
+############################################################################################
+## Toma de muestras ********* no cuadra jaja
+
+## Histograma de la serie de datos
+hist(tm, main = "Histograma de toma de muestras", xlab="Tasa de servicio", las=1, pro = FALSE)
+
+##  Bondad de ajuste para la franja horaria 1
+
+res7 <- fit.cont(tm)
+
+## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
+## a una distribuci?n de probabilidad ingresada por par?metro.
+ajuste7 <- fitdist(tm, "gamma")
+
+## Mostrar los par?metros del ajuste a la distribuci?n dada.
+ajuste7$estimate
+
+## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
+plot(ajuste7)
+
+## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
+## la distribuci?n te?rica escogida.
+resultados7 <- gofstat(ajuste7)
+
+## Rechazo de la prueba de Kolmogorov-Smirnov
+resultados7$kstest
+
+## P-Value de la prueba de Chi-Cuadrado
+resultados7$chisqpvalue
+
+############################################################################################
+## Entrega laboratorio
+
+## Histograma de la serie de datos
+hist(entrega, main = "Histograma de Optometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+
+##  Bondad de ajuste para la franja horaria 1
+
+res8 <- fit.cont(entrega)
+
+## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
+## a una distribuci?n de probabilidad ingresada por par?metro.
+ajuste8 <- fitdist(entrega, "llogis")
+
+## Mostrar los par?metros del ajuste a la distribuci?n dada.
+ajuste8$estimate
+
+## Mostrar las gr?ficas de inter?s de las distribuciones emp?rica y te?rica.
+plot(ajuste8)
+
+## Realizar y guardar prueba de bondad de ajuste a la serie de datos con respecto a
+## la distribuci?n te?rica escogida.
+resultados8 <- gofstat(ajuste8)
+
+## Rechazo de la prueba de Kolmogorov-Smirnov
+resultados8$kstest
+
+## P-Value de la prueba de Chi-Cuadrado
+resultados8$chisqpvalue
