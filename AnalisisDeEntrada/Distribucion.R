@@ -12,13 +12,12 @@ install.packages("rriskDistributions")
 library(MASS)
 library(survival)
 library(fitdistrplus)
+library(readxl)
 
 ############################################################################################
 ## Cargar serie de datos:
-datos <- read.csv(file="arribos.csv", header=TRUE, sep=",")
+datos <- read_excel("DATA_FINAL.xlsx", sheet = "DATA")
 
-# setwd("C:/Users/s-cabral/Dropbox/Simulaci?n 2018-10/Magistrales/Semana 5/Taller en R")
-# datos <- read.csv(file="Datos.csv", header=TRUE, sep=",")
 
 ############################################################################################
 ## Histograma de la serie de datos.
