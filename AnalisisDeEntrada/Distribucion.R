@@ -161,7 +161,7 @@ res4 <- fit.cont(audio)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste4 <- fitdist(audio, "lnorm")
+ajuste4 <- fitdist(audio, "gamma")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste4$estimate
@@ -179,7 +179,7 @@ resultados4$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados4$chisqpvalue
 
-## parámetros simio
+## parámetros simio - lognormal
 
 lNormMean4 = ajuste4$estimate["meanlog"]
 lNormStd4 = ajuste4$estimate["sdlog"]
