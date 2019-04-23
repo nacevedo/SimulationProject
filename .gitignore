@@ -2,3 +2,5 @@ AS-IS.backup
 TO-BE.backup
 ~$DATA_FINAL.xlsx
 .Rproj.user
+.RData
+.Rhistory

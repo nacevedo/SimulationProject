@@ -47,7 +47,7 @@ entrega <- entrega[!is.na(entrega)]
 ## Recepción 2
 
 ## Histograma de la serie de datos
-hist(r2, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(r2, main = "Histograma de la serie de datos Recepción 2", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -78,7 +78,7 @@ resultados$chisqpvalue
 ## Recepción 3
 
 ## Histograma de la serie de datos
-hist(r3, main = "Histograma de la serie de datos Recepción 3", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(r3, main = "Histograma de la serie de datos Recepción 3", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -108,10 +108,9 @@ resultados2$chisqpvalue
 ## Salud Ocupacional
 
 ## Histograma de la serie de datos
-hist(saludO, main = "Histograma de la serie de datos Salud Ocupacional", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(saludO, main = "Histograma de la serie de datos Salud Ocupacional", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
-
 res3 <- fit.cont(saludO)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
@@ -135,10 +134,10 @@ resultados3$kstest
 resultados3$chisqpvalue
 
 ############################################################################################
-## Audiometría ********* cuadra más con otras distribuciones
+## Audiometría
 
 ## Histograma de la serie de datos
-hist(audio, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(audio, main = "Histograma de la serie de datos", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -146,7 +145,7 @@ res4 <- fit.cont(audio)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste4 <- fitdist(audio, "llogis")
+ajuste4 <- fitdist(audio, "lnorm")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste4$estimate
@@ -165,10 +164,10 @@ resultados4$kstest
 resultados4$chisqpvalue
 
 ############################################################################################
-## Espirometría ********* cuadra más con otras distribuciones
+## Espirometría
 
 ## Histograma de la serie de datos
-hist(espir, main = "Histograma de Espirometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(espir, main = "Histograma de Espirometría", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -176,7 +175,7 @@ res5 <- fit.cont(espir)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste5 <- fitdist(espir, "gamma")
+ajuste5 <- fitdist(espir, "weibull")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste5$estimate
@@ -195,10 +194,10 @@ resultados5$kstest
 resultados5$chisqpvalue
 
 ############################################################################################
-## Optometría ********* cuadra más con otras distribuciones
+## Optometría
 
 ## Histograma de la serie de datos
-hist(opto, main = "Histograma de Optometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(opto, main = "Histograma de Optometría", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -225,10 +224,10 @@ resultados6$kstest
 resultados6$chisqpvalue
 
 ############################################################################################
-## Toma de muestras ********* no cuadra jaja
+## Toma de muestras
 
 ## Histograma de la serie de datos
-hist(tm, main = "Histograma de toma de muestras", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(tm, main = "Histograma de toma de muestras", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -236,7 +235,7 @@ res7 <- fit.cont(tm)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste7 <- fitdist(tm, "gamma")
+ajuste7 <- fitdist(tm, "lnorm")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste7$estimate
@@ -258,7 +257,7 @@ resultados7$chisqpvalue
 ## Entrega laboratorio
 
 ## Histograma de la serie de datos
-hist(entrega, main = "Histograma de Optometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(entrega, main = "Histograma de Entrega Laboratorio", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
