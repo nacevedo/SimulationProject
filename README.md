@@ -1,6 +1,6 @@
 # SimulationProject
 
-This is a sneak peak of our awesome simulation project. 
+This is a sneak peek of our awesome simulation project. 
 
 ## Members
 * Bibiana Gamba 
