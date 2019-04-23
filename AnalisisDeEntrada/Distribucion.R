@@ -73,6 +73,13 @@ resultados$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados$chisqpvalue
 
+## parámetros simio
+
+lNormMean = ajuste$estimate["meanlog"]
+lNormStd = ajuste$estimate["sdlog"]
+
+normMeanApertura = log( ((lNormMean^2) / (sqrt( lNormStd^2 + lNormMean^2 ))), exp(1) )
+normStdApertura = sqrt ( log(1 + lNormStd^2/lNormMean^2) )
 
 ############################################################################################
 ## Recepción 3
@@ -103,6 +110,15 @@ resultados2$kstest
 
 ## P-Value de la prueba de Chi-Cuadrado
 resultados2$chisqpvalue
+
+## parámetros simio
+
+lNormMean2 = ajuste2$estimate["meanlog"]
+lNormStd2 = ajuste2$estimate["sdlog"]
+
+normMeanApertura2 = log( lNormMean2^2 / sqrt( lNormStd2^2 + lNormMean2^2 ) )
+normStdApertura2 = sqrt ( log(1 + lNormStd2^2/lNormMean2^2) )
+
 
 ############################################################################################
 ## Salud Ocupacional
@@ -162,6 +178,14 @@ resultados4$kstest
 
 ## P-Value de la prueba de Chi-Cuadrado
 resultados4$chisqpvalue
+
+## parámetros simio
+
+lNormMean4 = ajuste4$estimate["meanlog"]
+lNormStd4 = ajuste4$estimate["sdlog"]
+
+normMeanApertura4 = log( lNormMean4^2 / sqrt( lNormStd4^2 + lNormMean4^2 ) )
+normStdApertura4 = sqrt ( log(1 + lNormStd4^2/lNormMean4^2) )
 
 ############################################################################################
 ## Espirometría
@@ -253,6 +277,15 @@ resultados7$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados7$chisqpvalue
 
+## parámetros simio
+
+lNormMean7 = ajuste7$estimate["meanlog"]
+lNormStd7 = ajuste7$estimate["sdlog"]
+
+normMeanApertura7 = log( lNormMean7^2 / sqrt( lNormStd7^2 + lNormMean7^2 ) )
+normStdApertura7 = sqrt ( log(1 + lNormStd7^2/lNormMean7^2) )
+
+
 ############################################################################################
 ## Entrega laboratorio
 
@@ -265,7 +298,7 @@ res8 <- fit.cont(entrega)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste8 <- fitdist(entrega, "llogis")
+ajuste8 <- fitdist(entrega, "weibull")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste8$estimate
