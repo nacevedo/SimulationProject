@@ -39,3 +39,174 @@ tm <- tm[!is.na(tm)]
 entrega <- datos$EntregaLab
 entrega <- entrega[!is.na(entrega)]
 
+datos <- read.csv(file="Datos.csv", header=TRUE, sep=",")
+
+
+
+
+### Prueba de homogeneidad de varianzas 
+
+############################################################################################################################
+concat <- c("1", "2") #Comparar franja 1 con 2 
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
+
+#Ver tabla
+View(dosniveles)
+
+#Prueba de varianzas iguales
+res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+#Resultados test F 
+res.ftest
+
+############################################################################################
+### Prueba de diferencia de medias
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles <- datos[datos$FranjaHoraria %in% concat, ]
+
+# Prueba de diferencia de medias
+res.ttest <- t.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+# Resultados prueba diferencia de medias
+res.ttest
+
+############################################################################################################################
+concat <- c("1", "3") #Comparar franja 1 con 3
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
+
+#Ver tabla
+View(dosniveles)
+
+#Prueba de varianzas iguales
+res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+#Resultados test F 
+res.ftest
+
+############################################################################################
+### Prueba de diferencia de medias
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles <- datos[datos$FranjaHoraria %in% concat, ]
+
+# Prueba de diferencia de medias
+res.ttest <- t.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+# Resultados prueba diferencia de medias
+res.ttest
+
+############################################################################################################################
+concat <- c("1", "4") #Comparar franja 1 con 3
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
+
+#Ver tabla
+View(dosniveles)
+
+#Prueba de varianzas iguales
+res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+#Resultados test F 
+res.ftest
+
+############################################################################################
+### Prueba de diferencia de medias
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles <- datos[datos$FranjaHoraria %in% concat, ]
+
+# Prueba de diferencia de medias
+res.ttest <- t.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+# Resultados prueba diferencia de medias
+res.ttest
+
+############################################################################################################################
+concat <- c("1", "4") #Comparar franja 1 con 3
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
+
+#Ver tabla
+View(dosniveles)
+
+#Prueba de varianzas iguales
+res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+#Resultados test F 
+res.ftest
+
+############################################################################################
+### Prueba de diferencia de medias
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles <- datos[datos$FranjaHoraria %in% concat, ]
+
+# Prueba de diferencia de medias
+res.ttest <- t.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+# Resultados prueba diferencia de medias
+res.ttest
+
+############################################################################################################################
+concat <- c("1", "5") #Comparar franja 1 con 3
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
+
+#Ver tabla
+View(dosniveles)
+
+#Prueba de varianzas iguales
+res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+#Resultados test F 
+res.ftest
+
+############################################################################################
+### Prueba de diferencia de medias
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles <- datos[datos$FranjaHoraria %in% concat, ]
+
+# Prueba de diferencia de medias
+res.ttest <- t.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+# Resultados prueba diferencia de medias
+res.ttest
+
+############################################################################################################################
+concat <- c("2", "4") #Comparar franja 1 con 3
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
+
+#Ver tabla
+View(dosniveles)
+
+#Prueba de varianzas iguales
+res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+#Resultados test F 
+res.ftest
+
+############################################################################################
+### Prueba de diferencia de medias
+
+#Filtrar la tabla por las 2 franjas horarias que voy a comparar
+dosniveles <- datos[datos$FranjaHoraria %in% concat, ]
+
+# Prueba de diferencia de medias
+res.ttest <- t.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
+
+# Resultados prueba diferencia de medias
+res.ttest
+
+
+
+
