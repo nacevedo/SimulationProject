@@ -39,10 +39,7 @@ tm <- tm[!is.na(tm)]
 entrega <- datos$EntregaLab
 entrega <- entrega[!is.na(entrega)]
 
-datos <- read.csv(file="Datos.csv", header=TRUE, sep=",")
-
-
-
+datos <- read_excel("DATA_FINAL.xlsx", sheet = "Arribos")
 
 ### Prueba de homogeneidad de varianzas 
 
@@ -78,8 +75,7 @@ concat <- c("1", "3") #Comparar franja 1 con 3
 #Filtrar la tabla por las 2 franjas horarias que voy a comparar
 dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
 
-#Ver tabla
-View(dosniveles)
+
 
 #Prueba de varianzas iguales
 res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
@@ -132,8 +128,7 @@ concat <- c("1", "4") #Comparar franja 1 con 3
 #Filtrar la tabla por las 2 franjas horarias que voy a comparar
 dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
 
-#Ver tabla
-View(dosniveles)
+
 
 #Prueba de varianzas iguales
 res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
@@ -159,8 +154,7 @@ concat <- c("1", "5") #Comparar franja 1 con 3
 #Filtrar la tabla por las 2 franjas horarias que voy a comparar
 dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
 
-#Ver tabla
-View(dosniveles)
+
 
 #Prueba de varianzas iguales
 res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
@@ -186,8 +180,6 @@ concat <- c("2", "4") #Comparar franja 1 con 3
 #Filtrar la tabla por las 2 franjas horarias que voy a comparar
 dosniveles<-datos[datos$FranjaHoraria %in% concat, ]
 
-#Ver tabla
-View(dosniveles)
 
 #Prueba de varianzas iguales
 res.ftest<-var.test(dosniveles$TiempoEntreArribo~dosniveles$FranjaHoraria,data=dosniveles)
