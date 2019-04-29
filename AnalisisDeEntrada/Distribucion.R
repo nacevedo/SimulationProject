@@ -47,7 +47,7 @@ entrega <- entrega[!is.na(entrega)]
 ## Recepción 2
 
 ## Histograma de la serie de datos
-hist(r2, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(r2, main = "Histograma de la serie de datos Recepción 2", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -73,12 +73,19 @@ resultados$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados$chisqpvalue
 
+## parámetros simio
+
+lNormMean = ajuste$estimate["meanlog"]
+lNormStd = ajuste$estimate["sdlog"]
+
+normMeanApertura = log( ((lNormMean^2) / (sqrt( lNormStd^2 + lNormMean^2 ))), exp(1) )
+normStdApertura = sqrt ( log(1 + lNormStd^2/lNormMean^2) )
 
 ############################################################################################
 ## Recepción 3
 
 ## Histograma de la serie de datos
-hist(r3, main = "Histograma de la serie de datos Recepción 3", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(r3, main = "Histograma de la serie de datos Recepción 3", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -104,14 +111,22 @@ resultados2$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados2$chisqpvalue
 
+## parámetros simio
+
+lNormMean2 = ajuste2$estimate["meanlog"]
+lNormStd2 = ajuste2$estimate["sdlog"]
+
+normMeanApertura2 = log( lNormMean2^2 / sqrt( lNormStd2^2 + lNormMean2^2 ) )
+normStdApertura2 = sqrt ( log(1 + lNormStd2^2/lNormMean2^2) )
+
+
 ############################################################################################
 ## Salud Ocupacional
 
 ## Histograma de la serie de datos
-hist(saludO, main = "Histograma de la serie de datos Salud Ocupacional", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(saludO, main = "Histograma de la serie de datos Salud Ocupacional", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
-
 res3 <- fit.cont(saludO)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
@@ -135,10 +150,10 @@ resultados3$kstest
 resultados3$chisqpvalue
 
 ############################################################################################
-## Audiometría ********* cuadra más con otras distribuciones
+## Audiometría
 
 ## Histograma de la serie de datos
-hist(audio, main = "Histograma de la serie de datos", xlab="Hora entre Arribos", las=1, pro = FALSE)
+hist(audio, main = "Histograma de la serie de datos", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -146,7 +161,7 @@ res4 <- fit.cont(audio)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste4 <- fitdist(audio, "llogis")
+ajuste4 <- fitdist(audio, "gamma")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste4$estimate
@@ -164,11 +179,19 @@ resultados4$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados4$chisqpvalue
 
+## parámetros simio - lognormal
+
+lNormMean4 = ajuste4$estimate["meanlog"]
+lNormStd4 = ajuste4$estimate["sdlog"]
+
+normMeanApertura4 = log( lNormMean4^2 / sqrt( lNormStd4^2 + lNormMean4^2 ) )
+normStdApertura4 = sqrt ( log(1 + lNormStd4^2/lNormMean4^2) )
+
 ############################################################################################
-## Espirometría ********* cuadra más con otras distribuciones
+## Espirometría
 
 ## Histograma de la serie de datos
-hist(espir, main = "Histograma de Espirometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(espir, main = "Histograma de Espirometría", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -176,7 +199,7 @@ res5 <- fit.cont(espir)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste5 <- fitdist(espir, "gamma")
+ajuste5 <- fitdist(espir, "weibull")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste5$estimate
@@ -195,10 +218,10 @@ resultados5$kstest
 resultados5$chisqpvalue
 
 ############################################################################################
-## Optometría ********* cuadra más con otras distribuciones
+## Optometría
 
 ## Histograma de la serie de datos
-hist(opto, main = "Histograma de Optometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(opto, main = "Histograma de Optometría", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -225,10 +248,10 @@ resultados6$kstest
 resultados6$chisqpvalue
 
 ############################################################################################
-## Toma de muestras ********* no cuadra jaja
+## Toma de muestras
 
 ## Histograma de la serie de datos
-hist(tm, main = "Histograma de toma de muestras", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(tm, main = "Histograma de toma de muestras", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -236,7 +259,7 @@ res7 <- fit.cont(tm)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste7 <- fitdist(tm, "gamma")
+ajuste7 <- fitdist(tm, "lnorm")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste7$estimate
@@ -254,11 +277,20 @@ resultados7$kstest
 ## P-Value de la prueba de Chi-Cuadrado
 resultados7$chisqpvalue
 
+## parámetros simio
+
+lNormMean7 = ajuste7$estimate["meanlog"]
+lNormStd7 = ajuste7$estimate["sdlog"]
+
+normMeanApertura7 = log( lNormMean7^2 / sqrt( lNormStd7^2 + lNormMean7^2 ) )
+normStdApertura7 = sqrt ( log(1 + lNormStd7^2/lNormMean7^2) )
+
+
 ############################################################################################
 ## Entrega laboratorio
 
 ## Histograma de la serie de datos
-hist(entrega, main = "Histograma de Optometría", xlab="Tasa de servicio", las=1, pro = FALSE)
+hist(entrega, main = "Histograma de Entrega Laboratorio", xlab="Tiempo de servicio", las=1, pro = FALSE)
 
 ##  Bondad de ajuste para la franja horaria 1
 
@@ -266,7 +298,7 @@ res8 <- fit.cont(entrega)
 
 ## Almacenar la estimaci?n por m?xima verosimilitud de la serie de datos
 ## a una distribuci?n de probabilidad ingresada por par?metro.
-ajuste8 <- fitdist(entrega, "llogis")
+ajuste8 <- fitdist(entrega, "weibull")
 
 ## Mostrar los par?metros del ajuste a la distribuci?n dada.
 ajuste8$estimate
