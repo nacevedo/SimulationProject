@@ -123,8 +123,7 @@
                 <p class="lead pt-4 pb-4">
                     Porsalud IPS es una institución de servicios de salud de carácter privado. La empresa desea reducir
                     los contratos perdidos para el servicio de <strong>salud ocupacional</strong>, pues es la principal
-                    fuente de
-                    ingresos para la empresa.
+                    fuente de ingresos para la empresa.
                     <br/>
                     <br/>
                     En este proyecto, se utiliza un <strong>modelo de simulación junto con
@@ -183,6 +182,10 @@
                 <p class="lead text-muted text-white">
                     Campo médico enfocado en la promoción y mantenimiento del bienestar físico, mental y social de los
                     trabajadores de todas las profesiones.
+                </p>
+                <p class="lead text-muted text-white">
+                    Porsalud realiza exámenes como espirometría, optometría, entre otras, seguidas por una valoración de
+                    un doctor para dar su recomendación a las empresas.
                 </p>
                 <p class="lead text-muted text-white">Empresas como Bavaria, Coca-Cola y Arturo Calle, envían a sus
                     posibles empleados a Porsalud para que esta determine su aptitud en términos de salud.</p>
@@ -298,7 +301,12 @@
                         <li><strong>¿Cómo funciona?</strong></li>
                         <li>
                             <p>Creación de un índice de priorización:</p>
-                            <p>\(P_i=3*y_i+{ts_i \over tm_i}*7\) </p>
+                            <p>\(P_i=a*y_i+b*{ts_i \over tm_i},\)</p>
+                            <p style="text-align: left">\(a,b:\) Pesos de cada factor, encontrados con
+                                <strong>OptQuest</strong><br/>
+                                \(y_i:\) Si la empresa ha solicitado que el cliente \(i\) sea preferencial<br/>
+                                \(ts_i:\) Tiempo en el sistema del cliente \(i\)<br/>
+                                \(tm_i:\) Tiempo máximo del cliente \(i\) según contrato</p>
                         </li>
                         <li><strong>Implicaciones</strong></li>
                         <li>
@@ -332,7 +340,8 @@
                     <ul class="list-unstyled">
                         <li><strong>¿Cómo funciona?</strong></li>
                         <li>
-                            <p></p>
+                            Los empleados de Porsalud ya no realizarán sólamente las pruebas en las que son
+                                especialistas.
                         </li>
                         <li><strong>Implicaciones</strong></li>
                         <li>
@@ -346,8 +355,8 @@
                         <li>
                             <ul>
                                 <li>Mayor throughput en el sistema al tener una fuerza de trabajo con habilidades más
-                                    diversas. Teniendo en cuenta que la demana de un tipo específico de examen varía
-                                    bastante, tener
+                                    diversas. Teniendo en cuenta que la demanda de un tipo específico de examen varía
+                                    bastante, esta alternativa permite responder mejor ante estas variaciones.
                                 </li>
                                 <li>Mayor satisfacción de los usuarios y de las empresas aliadas porque, al tener más
                                     empleados capacitados en los diferentes examenes, se reducen los tiempos ociosos. Lo
