@@ -45,6 +45,11 @@ ic1R = paste("[",p1icInferiorR, ", ", p1icSuperiorR, "]")
 ic1S = paste("[",icInferior1, ", ", icSuperior1, "]")
 ic1R
 ic1S
+p1desvR
+e1inf = abs(p1media-icInferior1)
+e1sup = abs(p1media-icSuperior1)
+ep = max(e1inf, e1sup)
+ep
 
 # Después de agregar réplicas
 
@@ -57,6 +62,13 @@ icSuperior12 <- p1media2 + tinv(0.975,250) * (p1desv2/sqrt(251))
 ic1S2 = paste("[",icInferior12, ", ", icSuperior12, "]")
 ic1R
 ic1S2
+
+p1desvR
+e1inf = abs(p1media-icInferior12)
+e1sup = abs(p1media-icSuperior12)
+ep = max(e1inf, e1sup)
+ep
+
 
 ############################################################################################
 ## Profesiograma 2
@@ -75,6 +87,13 @@ ic2S = paste("[",icInferior2, ", ", icSuperior2, "]")
 ic2R
 ic2S
 
+p2desvR
+e2inf = abs(p2media-icInferior2)
+e2sup = abs(p2media-icSuperior2)
+ep2 = max(e2inf, e2sup)
+ep2
+
+
 # Después de agregar réplicas
 
 p2media2 <- 46.8198
@@ -87,6 +106,12 @@ ic2R = paste("[",p2icInferiorR, ", ", p2icSuperiorR, "]")
 ic2S2 = paste("[",icInferior22, ", ", icSuperior22, "]")
 ic2R
 ic2S2
+
+p2desvR
+e2inf = abs(p2media-icInferior22)
+e2sup = abs(p2media-icSuperior22)
+ep2 = max(e2inf, e2sup)
+ep2
 
 ############################################################################################
 ## Profesiograma 3
