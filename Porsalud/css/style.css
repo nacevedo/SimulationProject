@@ -693,7 +693,7 @@ Navigation
 }
 
 .screen .header-overlay.gradient {
-  background-color: rgba(4,85,166, 0.5);
+  background-color: rgba(40,85,166, 0.5);
   background-image: -webkit-linear-gradient(0deg, #117AC9, #0455A6);
   background-image: linear-gradient(90deg, #117AC9, #0455A6);
 }
