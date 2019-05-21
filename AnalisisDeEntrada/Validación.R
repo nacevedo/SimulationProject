@@ -172,3 +172,59 @@ ic4R = paste("[",p4icInferiorR, ", ", p4icSuperiorR, "]")
 ic4S2 = paste("[",icInferior42, ", ", icSuperior42, "]")
 ic4R
 ic4S2
+
+
+
+
+
+
+
+
+
+############################################################################################
+## DIFERENCIA DE MEDIASSSSSSSS
+
+media1 <- 3.43
+media2 <- 4.24
+
+desv1 <- (0.6*sqrt(251))/tinv(0.975,250)
+desv2 <- (0.84*sqrt(251))/tinv(0.975,250)
+
+sp <- sqrt((250*desv1 +250*desv2)/(250+250))
+se <- sp*sqrt(1/251+1/251)
+
+intervalo1 <- media1 - media2 -se*tinv(0.975,250)
+intervalo2 <- media1 - media2 +se*tinv(0.975,250)
+
+p4media <- 88.8348
+p4desv <- (12.4082*sqrt(30))/tinv(0.975,29)
+
+media1 <- 5.01
+media2 <- 4.24
+
+desv1 <- (0.87*sqrt(251))/tinv(0.975,250)
+desv2 <- (0.84*sqrt(251))/tinv(0.975,250)
+
+sp <- sqrt((250*desv1 +250*desv2)/(250+250))
+se <- sp*sqrt(1/251+1/251)
+
+intervalo1 <- media1 - media2 -se*tinv(0.975,250)
+intervalo2 <- media1 - media2 +se*tinv(0.975,250)
+
+p4media <- 88.8348
+p4desv <- (12.4082*sqrt(30))/tinv(0.975,29)
+
+
+
+# Después de agregar réplicas
+
+p4media2 <- 86.6374
+p4desv2 <- (3.1715*sqrt(251))/tinv(0.975,250)
+
+icInferior42 <- p4media2 - tinv(0.975,250) * (p4desv2/sqrt(251))
+icSuperior42 <- p4media2 + tinv(0.975,250) * (p4desv2/sqrt(251))
+
+ic4R = paste("[",p4icInferiorR, ", ", p4icSuperiorR, "]")
+ic4S2 = paste("[",icInferior42, ", ", icSuperior42, "]")
+ic4R
+ic4S2
